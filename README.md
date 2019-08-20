@@ -1,5 +1,5 @@
 # NoHighDPI
-Force High DPI scaling on Android devices.
+Disable High DPI scaling on Android devices.
 
 ### How to use
 
