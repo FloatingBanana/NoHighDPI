@@ -3,6 +3,7 @@ Disable High DPI scaling on Android devices.
 
 ### How to use
 
+You just need to do this:
 ```lua
 nohdpi = require "nohighdpi"
 
@@ -14,8 +15,11 @@ function love.load()
     nohighdpi:replace()
 end
 ```
+Now you can use LÖVE normally.
 
 ### Manual Mode
+
+If you don't want to replace the modules, you can use the library manually.
 ```lua
 nohdpi = require "nohighdpi"
 
@@ -29,7 +33,13 @@ function love.draw()
     
     --Draw your things here
     love.graphics.circle("line", nohdpi:mouseX(), nohdpi:mouseY(), 5, 100)
-
+    
+    local touches = love.touch.getTouches()
+    for i, id in pairs(touches) do
+        local x, y = nohdpi:touchPosition(id)
+        love.graphics.circle("fill", x, y, 8, 100)
+    end
+    
     --You can also change the resolution
     nohdpi:rescale(1000, 675)
     
