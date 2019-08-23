@@ -1,4 +1,4 @@
-nohdpi = {}
+local nohdpi = {}
 
 local min, max, floor = math.min, math.max, math.floor
 
