@@ -84,7 +84,7 @@ end
 
 function nohdpi:mousePosition()
 	local x, y = mousegetPosition()
-	x, y = floor(toPixels(x) / scalerW), floor(toPixels(y) * scalerH)
+	x, y = floor(toPixels(x) / scalerW), floor(toPixels(y) / scalerH)
 	return x, y
 end
 
