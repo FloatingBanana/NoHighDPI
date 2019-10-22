@@ -12,7 +12,7 @@ function love.load()
     --as arguments to replace the given modules.
     --If you don't give any arguments, then
     --all modules will be replaced.
-    nohighdpi:replace()
+    nohdpi.replace()
 end
 ```
 Now you can use LÖVE normally.
@@ -29,21 +29,21 @@ end
 
 function love.draw()
     --You can optionally give a custom resolution
-    nohdpi:start(800, 600)
+    nohdpi.start(800, 600)
     
     --Draw your things here
     love.graphics.circle("line", nohdpi:mouseX(), nohdpi:mouseY(), 5, 100)
     
     local touches = love.touch.getTouches()
     for i, id in pairs(touches) do
-        local x, y = nohdpi:touchPosition(id)
+        local x, y = nohdpi.touchPosition(id)
         love.graphics.circle("fill", x, y, 8, 100)
     end
     
     --You can also change the resolution
-    nohdpi:rescale(1000, 675)
+    nohdpi.rescale(1000, 675)
     
-    nohdpi:stop()
+    nohdpi.stop()
 end
 
 function love.update(dt)
@@ -51,7 +51,7 @@ function love.update(dt)
 end
 
 function love.mousepressed(x, y, button, isTouch)
-    x, y = nohdpi:toResized(x, y)
+    x, y = nohdpi.toResized(x, y)
     
     --Use it normally. The same goes to mousereleased, touchpressed, touchreleased...
 end
@@ -63,15 +63,15 @@ end
 nohdpi = require "nohighdpi"
 
 function love.load()
-    nohdpi:replace("mouse", "touch")
+    nohdpi.replace("mouse", "touch")
 end
 
 function love.draw()
-    nohdpi:start()
+    nohdpi.start()
 
     love.graphics.circle("line", love.mouse.getX(), love.mouse.getY(), 5, 100)
  
-    nohdpi:stop()
+    nohdpi.stop()
 end
 
 function love.update(dt)
@@ -85,25 +85,25 @@ end
 
 ### Functions
 ```lua
-nohdpi:replace(...)           --Replace "graphics", "mouse" and/or "touch" modules with the following functions
+nohdpi.replace(...)           --Replace "graphics", "mouse" and/or "touch" modules with the following functions
 
-nohdpi:start(width, height)   --Start scaling using the given resolution
+nohdpi.start(width, height)   --Start scaling using the given resolution
 
-nohdpi:stop()                 --Stop scaling
+nohdpi.stop()                 --Stop scaling
 
-nohdpi:rescale(width, height) --Change resolution
+nohdpi.rescale(width, height) --Change resolution
 
-nohdpi:mouseX()               --Scaled X mouse position
+nohdpi.mouseX()               --Scaled X mouse position
 
-nohdpi:mouseY()               --Scaled Y mouse position
+nohdpi.mouseY()               --Scaled Y mouse position
 
-nohdpi:mousePosition()        --Scaled X and Y mouse positions
+nohdpi.mousePosition()        --Scaled X and Y mouse positions
 
-nohdpi:touchPosition(id)      --Scaled X and Y touch positions
+nohdpi.touchPosition(id)      --Scaled X and Y touch positions
 
-nohdpi:toScaled(x, y)         --Convert real coordinates to scaled coordinates
+nohdpi.toScaled(x, y)         --Convert real coordinates to scaled coordinates
 
-nohdpi:toReal(x, y)           --Convert scaled coordinates to real coordinates
+nohdpi.toReal(x, y)           --Convert scaled coordinates to real coordinates
 ```
 
 ## Notes
@@ -114,7 +114,7 @@ nohdpi = require "nohighdpi"
 gamestate = require "hump.gamestate"
 
 function love.load()
-    nohdpi:replace()
+    nohdpi.replace()
     gamestate.switch(something)
 end
 
