@@ -1,3 +1,5 @@
+This library is useless since LÖVE 11.3 allows to disable automomatic DPI scaling by setting `t.window.usedpiscale = false` in conf.lua
+
 # NoHighDPI
 Disable High DPI scaling on Android devices.
 
